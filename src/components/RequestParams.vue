@@ -14,6 +14,12 @@
         <template v-else-if="text == 'query'">
           <span style="color: #61affe">{{ text }}</span>
         </template>
+        <template v-else-if="text == 'header'">
+          <span style="color: #fca130">{{ text }}</span>
+        </template>
+        <template v-else-if="text == 'path'">
+          <span style="color: #49cc90">{{ text }}</span>
+        </template>
         <template v-else>
           <span>{{ text }}</span>
         </template>
