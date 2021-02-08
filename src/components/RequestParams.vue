@@ -20,6 +20,9 @@
         <template v-else-if="text == 'path'">
           <span style="color: #49cc90">{{ text }}</span>
         </template>
+        <template v-else-if="text == 'formData'">
+          <span style="color: #9012fe">{{ text }}</span>
+        </template>
         <template v-else>
           <span>{{ text }}</span>
         </template>
