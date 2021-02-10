@@ -8,4 +8,15 @@ mongodb 为测试用的数据
 
 
 
-前端项目采用 Vue2.6，ant-design-vue，vue2-ace-editor开发，后端项目采用 egg.js 开发
+前端技术栈：
+
+Vue2.6，ant-design-vue，vue2-ace-editor
+
+后端技术栈：
+
+egg.js，mongoDB，mongoose.js
+
+数据库可视化：
+
+MongoDB Compass
+
