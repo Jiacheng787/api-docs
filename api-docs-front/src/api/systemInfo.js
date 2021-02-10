@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = '/api/api-docs/system-info';
+const baseUrl = '/api/api-docs/docs';
 let systemInfo = {};
 
 /**
@@ -8,7 +8,7 @@ let systemInfo = {};
  */
 systemInfo.getApiBaseInfo = function() {
     return request({
-        url: `${baseUrl}/apiBaseInfo`,
+        url: `${baseUrl}/getBaseInfo`,
         method: 'get'
     })
 }
@@ -18,7 +18,7 @@ systemInfo.getApiBaseInfo = function() {
  */
 systemInfo.getApiList = function() {
     return request({
-        url: `${baseUrl}/apiList`,
+        url: `${baseUrl}/getMenuList`,
         method: 'get'
     })
 }
@@ -27,9 +27,9 @@ systemInfo.getApiList = function() {
  * @description 获取单个api接口信息
  * @param {*} id 
  */
-systemInfo.getApiDetail = function(id) {
+systemInfo.getApiDetail = function(operationId) {
     return request({
-        url: `${baseUrl}/apiDetail?id=${id}`,
+        url: `${baseUrl}/getDetail?operationId=${operationId}`,
         method: 'get'
     })
 }

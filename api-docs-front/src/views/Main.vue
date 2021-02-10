@@ -75,6 +75,9 @@ export default {
         .then(res => {
           this.navMenu = res.data;
         })
+        .catch(e => {
+          this.$message.error(e.message);
+        })
     },
     handleClick(e) {
       if (e.key == "-1") {

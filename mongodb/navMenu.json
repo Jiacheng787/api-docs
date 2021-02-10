@@ -1,0 +1,44 @@
+[
+    {
+        "icon": "file-done",
+        "title": "公共接口",
+        "children": [
+            {
+                "title": "获取主节点信息",
+                "path": "111"
+            },
+            {
+                "title": "获取集群当前登录用户名",
+                "path": "222"
+            }
+        ]
+    },
+    {
+        "icon": "menu",
+        "title": "租户管理",
+        "children": [
+            {
+                "title": "编辑租户",
+                "path": "333"
+            },
+            {
+                "title": "删除租户",
+                "path": "444"
+            }
+        ]
+    },
+    {
+        "icon": "user",
+        "title": "用户组管理",
+        "children": [
+            {
+                "title": "添加用户组",
+                "path": "555"
+            },
+            {
+                "title": "删除用户组",
+                "path": "666"
+            }
+        ]
+    }
+]

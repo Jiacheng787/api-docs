@@ -16,7 +16,24 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1612927643153_9958';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'errorHandler' ];
+
+  // 错误处理中间件对 /api 前缀的 url 路径生效
+  config.errorHandler = {
+    match: '/api',
+  };
+
+  // mongodb 配置项
+  // 27017 是默认端口号，api_docs 是数据库名
+  config.mongoose = {
+    url: 'mongodb://127.0.0.1:27017/api_docs',
+    options: {},
+  };
+
+  // 关闭 csrf token
+  config.security = {
+    csrf: false,
+  };
 
   // add your user config here
   const userConfig = {

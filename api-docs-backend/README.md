@@ -1,5 +1,21 @@
 # api-docs-backend
 
+mongoose.js参考文档：
+
+https://mongoosejs.com/docs/index.html
+
+Egg中使用egg-mongoose和常用的Mongoose 方法：
+
+https://www.cnblogs.com/wxw1314/p/10339775.html
+
+egg-mongoose npm：
+
+https://www.npmjs.com/package/egg-mongoose
+
+mongoDB 菜鸟教程：
+
+https://www.runoob.com/mongodb/mongodb-create-collection.html
+
 
 
 ## QuickStart

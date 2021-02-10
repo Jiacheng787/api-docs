@@ -1,10 +1,23 @@
 <template>
   <div class="base-info">
     <a-descriptions title="文档信息">
-      <a-descriptions-item v-for="(item, index) in descriptionList"
-                           :key="index"
-                           :label="item.label">
-        {{ item.desc }}
+      <a-descriptions-item key="" label="项目名称">
+        {{ description.title }}
+      </a-descriptions-item>
+      <a-descriptions-item key="" label="项目简介">
+        {{ description.description }}
+      </a-descriptions-item>
+      <a-descriptions-item key="" label="版本">
+        {{ description.version }}
+      </a-descriptions-item>
+      <a-descriptions-item key="" label="host">
+        {{ description.host }}
+      </a-descriptions-item>
+      <a-descriptions-item key="" label="basePath">
+        {{ description.basePath }}
+      </a-descriptions-item>
+      <a-descriptions-item key="" label="接口url">
+        {{ description.url }}
       </a-descriptions-item>
     </a-descriptions>
   </div>
@@ -16,7 +29,14 @@ export default {
   name: 'base-info',
   data() {
     return {
-      descriptionList: []
+      description: {
+        title: "-",
+        description: "-",
+        version: "-",
+        host: "-",
+        basePath: "-",
+        url: "-"
+      }
     }
   },
   mounted() {
@@ -29,7 +49,10 @@ export default {
     getApiBaseInfo() {
       api.systemInfo.getApiBaseInfo()
         .then(res => {
-          this.descriptionList = res.data;
+          this.description = res.data[0];
+        })
+        .catch(e => {
+          this.$message.error(e.message);
         })
     }
   }

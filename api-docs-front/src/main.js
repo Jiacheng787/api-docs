@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import antdv from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css';
-import '@/mock'
+// import '@/mock'
 
 Vue.config.productionTip = false
 
