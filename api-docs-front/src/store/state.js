@@ -1,5 +1,6 @@
 const state = {
-    username: 'root'
+    navMenu: [],
+    baseInfo: {}
 }
 
 export default state

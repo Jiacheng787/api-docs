@@ -1,7 +1,11 @@
-import systemInfo from './systemInfo'
+import baseInfo from './baseInfo'
+import navMenu from './navMenu'
+import apiDetail from './apiDetail'
 
 let api = {
-    systemInfo
+    baseInfo,
+    navMenu,
+    apiDetail
 }
 
 export default api

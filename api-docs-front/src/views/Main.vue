@@ -31,29 +31,11 @@
                 <span>
                   <a-icon :type="item.icon" />
                   <span>{{ item.title }}</span>
-                  <a-badge
+                </span>
+                <a-badge
                     :count="item.children.length"
-                    class="badge-count"
                     :number-style="{ backgroundColor: '#52c41a' }"
                   />
-                </span>
-                <a-dropdown>
-                  <a-icon type="more" class="more-menu-icon" />
-                  <a-menu slot="overlay">
-                    <a-menu-item key="1" @click="() => handleAddInterface(item)">
-                      <a-icon type="plus" />
-                      添加接口
-                    </a-menu-item>
-                    <a-menu-item key="2" @click="() => handleEditSort(item)">
-                      <a-icon type="edit" />
-                      编辑分类
-                    </a-menu-item>
-                    <a-menu-item key="3" @click="() => handleDeleteSort(item)">
-                      <a-icon type="delete" />
-                      删除分类
-                    </a-menu-item>
-                  </a-menu>
-                </a-dropdown>
               </span>
             </span>
             <a-menu-item
@@ -74,14 +56,16 @@
 </template>
 
 <script>
-import api from "@/api";
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "menu-list",
   data() {
     return {
       selectedKeys: ["-1"],
-      navMenu: [],
     };
+  },
+  computed: {
+    ...mapGetters(['navMenu'])
   },
   // watch: {
   //   '$route': {
@@ -98,18 +82,10 @@ export default {
   // },
   mounted() {
     this.getApiNavMenu();
+    this.getApiBaseInfo();
   },
   methods: {
-    getApiNavMenu() {
-      api.systemInfo
-        .getApiList()
-        .then((res) => {
-          this.navMenu = res.data;
-        })
-        .catch((e) => {
-          this.$message.error(e.message);
-        });
-    },
+    ...mapActions(['getApiNavMenu', 'getApiBaseInfo']),
     handleMenuClick(e) {
       if (e.key == "-1") {
         this.$router.push(`/docs`);
@@ -125,21 +101,6 @@ export default {
     },
     handleAddInterface(item) {
       console.log(item._id)
-    },
-    handleEditSort(item) {
-      console.log(item.title)
-    },
-    handleDeleteSort(item) {
-      this.$confirm({
-        title: `确定要删除《${item.title}》分类吗？`,
-        content: '该分类下面的所有接口也将一并删除',
-        async onOk() {
-          await new Promise(resolve => {
-            setTimeout(resolve, 1000);
-          })
-        },
-        onCancel() {},
-      });
     }
   },
 };
@@ -178,18 +139,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .badge-count {
-          margin-left: 4px;
-        }
-        &:hover {
-          .more-menu-icon {
-            display: inline;
-          }
-        }
-        .more-menu-icon {
-          display: none;
-          transform: rotate(90deg);
-        }
       }
     }
     .content {

@@ -1,6 +1,24 @@
 <template>
   <div class="interface-summary">
-    <a-descriptions :title="summary.title"></a-descriptions>
+    <div class="detail-header">
+      <a-descriptions :title="summary.title"></a-descriptions>
+      <div class="button-group">
+        <a-button type="primary"
+                  style="margin-right: 12px;"
+                  @click="openDebuggerPanel">
+          <a-icon type="tool" />
+          调试
+        </a-button>
+        <a-button style="margin-right: 12px;">
+          <a-icon type="edit" />
+          编辑
+        </a-button>
+        <a-button type="danger">
+          <a-icon type="delete" />
+          删除
+        </a-button>
+      </div>
+    </div>
     <div
       class="summary"
       :style="{ background: colorMap[summary.method || 'GET'].summary }"
@@ -58,11 +76,23 @@ export default {
       },
     };
   },
+  methods: {
+    openDebuggerPanel() {
+      this.$emit('openDebuggerPanel')
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .interface-summary {
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    .button-group {
+      display: flex;
+    }
+  }
   .summary {
     display: flex;
     align-items: center;

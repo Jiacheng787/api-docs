@@ -5,8 +5,13 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  // router.get('/', controller.home.index);
-  router.get('/api/api-docs/docs/getBaseInfo', controller.docs.getBaseInfo);
-  router.get('/api/api-docs/docs/getMenuList', controller.docs.getMenuList);
-  router.get('/api/api-docs/docs/getDetail', controller.docs.getDetail);
+  // 基本信息
+  router.get('/api/api-docs/baseInfo/getBaseInfo', controller.baseInfo.getBaseInfo);
+  // 分类管理
+  router.get('/api/api-docs/navMenu/getMenuList', controller.navMenu.getMenuList);
+  router.post('/api/api-docs/navMenu/createNewSort', controller.navMenu.createNewSort);
+  router.put('/api/api-docs/navMenu/updateSort', controller.navMenu.updateSort);
+  router.delete('/api/api-docs/navMenu/deleteSort', controller.navMenu.deleteSort);
+  // 接口详情
+  router.get('/api/api-docs/apiDetail/getDetail', controller.apiDetail.getDetail);
 };

@@ -2,7 +2,7 @@
   <div class="overviews">
     <a-spin :spinning="spinning" size="large">
       <!-- 接口概览 -->
-      <InterfaceSummary :summary="apiDetail.summary" />
+      <InterfaceSummary :summary="apiDetail.summary" @openDebuggerPanel="openDebuggerPanel" />
       <!-- 接口描述 -->
       <InterfaceDescription :description="apiDetail.description" />
       <!-- 请求示例 -->
@@ -16,6 +16,7 @@
       <!-- 响应示例 -->
       <CodeExample :type="1" :example="apiDetail.resExample" />
     </a-spin>
+    <DebuggerPanel ref="debugger-panel" />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import RequestParams from "@/components/RequestParams";
 import ResponseStatus from "@/components/ResponseStatus";
 import ResponseParams from "@/components/ResponseParams";
 import CodeExample from "@/components/CodeExample";
+import DebuggerPanel from "@/components/DebuggerPanel";
 export default {
   name: "overviews",
   components: {
@@ -36,6 +38,7 @@ export default {
     ResponseStatus,
     ResponseParams,
     CodeExample,
+    DebuggerPanel
   },
   data() {
     return {
@@ -55,7 +58,7 @@ export default {
   methods: {
     getApiDetail(id) {
       this.spinning = true;
-      api.systemInfo.getApiDetail(id)
+      api.apiDetail.getApiDetail(id)
         .then((res) => {
           console.log(res);
           this.apiDetail = res.data;
@@ -67,6 +70,9 @@ export default {
           this.spinning = false;
         })
     },
+    openDebuggerPanel() {
+      this.$refs['debugger-panel'].handleOpen();
+    }
   },
 };
 </script>
