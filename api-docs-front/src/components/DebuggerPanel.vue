@@ -21,7 +21,7 @@
         v-model="form.reqUrl"
         enter-button="发送"
         @search="handleSubmit"
-        :loading="isLoading"
+        :disabled="spinning"
       />
     </a-input-group>
     <a-tabs default-active-key="1">
@@ -53,25 +53,27 @@
         ></Editor>
       </a-tab-pane>
     </a-tabs>
-    <div class="response">
-      <div class="status-bar">
-        <span class="status-item">状态码：{{ resData.status }}</span>
-        <span class="status-item">耗时：{{ resData.timing }}ms</span>
-        <span>大小：{{ resData.size }}B</span>
+    <a-spin :spinning="spinning" size="large">
+      <div class="response">
+        <div class="status-bar">
+          <span class="status-item">状态码：{{ resData.status }}</span>
+          <span class="status-item">耗时：{{ resData.timing }}ms</span>
+          <span>大小：{{ resData.size }}B</span>
+        </div>
+        <a-tabs default-active-key="1" size="small">
+          <a-tab-pane key="1" tab="响应内容">
+            <Editor
+              v-model="resData.data"
+              @init="editorInit"
+              lang="json"
+              theme="chrome"
+              width="100%"
+              height="400"
+            ></Editor>
+          </a-tab-pane>
+        </a-tabs>
       </div>
-      <a-tabs default-active-key="1" size="small">
-        <a-tab-pane key="1" tab="响应内容">
-          <Editor
-            v-model="resData.data"
-            @init="editorInit"
-            lang="json"
-            theme="chrome"
-            width="100%"
-            height="400"
-          ></Editor>
-        </a-tab-pane>
-      </a-tabs>
-    </div>
+    </a-spin>
   </a-drawer>
 </template>
 
@@ -86,7 +88,7 @@ export default {
   data() {
     return {
       visible: false,
-      isLoading: false,
+      spinning: false,
       form: {
         reqMethod: "GET",
         reqUrl: "",
@@ -160,13 +162,15 @@ export default {
     async handleSubmit() {
       try {
         await this.formValidate();
-        this.isLoading = true;
+        this.spinning = true;
         api.apiDebug
           .debugger(this.form)
           .then((res) => {
             if (res.success) {
               Object.assign(this.resData, {
-                data: res.data.data ? JSON.stringify(res.data.data, null, 4) : "",
+                data: res.data.data
+                  ? JSON.stringify(res.data.data, null, 4)
+                  : "",
                 status: res.data.status,
                 timing: res.data.timing.contentDownload,
                 size: res.data.size,
@@ -179,8 +183,8 @@ export default {
             this.$message.error(e.message);
           })
           .finally(() => {
-            this.isLoading = false;
-          })
+            this.spinning = false;
+          });
       } catch (e) {
         this.$message.error(e);
       }
