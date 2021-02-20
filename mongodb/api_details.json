@@ -1,0 +1,369 @@
+[{
+  "_id": {
+    "$oid": "602bc6b2b3daff3b18a58070"
+  },
+  "reqParams": [
+    {
+      "name": "Authorization",
+      "description": "令牌",
+      "in": "header",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 0
+    },
+    {
+      "name": "title",
+      "description": "分类名称",
+      "in": "body",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 1
+    },
+    {
+      "name": "icon",
+      "description": "分类图标",
+      "in": "body",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 2
+    }
+  ],
+  "resStatus": [
+    {
+      "code": "200",
+      "description": "OK",
+      "schema": "",
+      "key": 0
+    },
+    {
+      "code": "401",
+      "description": "Unauthorized",
+      "schema": "",
+      "key": 1
+    },
+    {
+      "code": "403",
+      "description": "Fobidden",
+      "schema": "",
+      "key": 2
+    }
+  ],
+  "resParams": [
+    {
+      "name": "success",
+      "description": "操作结果",
+      "type": "boolean",
+      "format": "",
+      "key": 0
+    },
+    {
+      "name": "data",
+      "description": "响应数据",
+      "type": "Object",
+      "format": "",
+      "key": 1
+    },
+    {
+      "name": "msg",
+      "description": "后台操作信息",
+      "type": "string",
+      "format": "",
+      "key": 2
+    },
+    {
+      "name": "code",
+      "description": "状态码",
+      "type": "number",
+      "format": "",
+      "key": 3
+    }
+  ],
+  "summary": {
+    "title": "添加分类",
+    "method": "POST",
+    "url": "/api/api-docs/navMenu/createNewSort",
+    "consumes": "application/json",
+    "produces": "application/json"
+  },
+  "description": "用于添加新的接口分类",
+  "reqExample": {
+    "title": "",
+    "icon": ""
+  },
+  "resExample": {
+    "success": true,
+    "msg": "",
+    "code": 200
+  },
+  "parentMenuId": "602bc46ab3daff3b18a5806f",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "602bc9e1b3daff3b18a58071"
+  },
+  "reqParams": [
+    {
+      "name": "Authorization",
+      "description": "令牌",
+      "in": "header",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 0
+    }
+  ],
+  "resStatus": [
+    {
+      "code": "200",
+      "description": "OK",
+      "schema": "",
+      "key": 0
+    },
+    {
+      "code": "401",
+      "description": "Unauthorized",
+      "schema": "",
+      "key": 1
+    },
+    {
+      "code": "403",
+      "description": "Fobidden",
+      "schema": "",
+      "key": 2
+    }
+  ],
+  "resParams": [
+    {
+      "name": "res",
+      "description": "操作结果",
+      "type": "boolean",
+      "format": "",
+      "key": 0
+    }
+  ],
+  "summary": {
+    "title": "可选字段测试",
+    "method": "GET",
+    "url": "api/sdvsdsdvsdsd",
+    "consumes": "application/json",
+    "produces": "application/json"
+  },
+  "description": "可选字段测试",
+  "parentMenuId": "602bc46ab3daff3b18a5806f",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "602bca76b3daff3b18a58072"
+  },
+  "reqParams": [
+    {
+      "name": "Authorization",
+      "description": "令牌",
+      "in": "header",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 0
+    },
+    {
+      "name": "ssaasda",
+      "description": "asdasdas",
+      "in": "body",
+      "required": "false",
+      "type": "number",
+      "format": "",
+      "key": 1
+    },
+    {
+      "name": "ssdsfsdds",
+      "description": "sdfddd",
+      "in": "query",
+      "required": "true",
+      "type": "boolean",
+      "format": "",
+      "key": 2
+    },
+    {
+      "name": "sdsdsd",
+      "description": "sdssdsdds",
+      "in": "path",
+      "required": "false",
+      "type": "string",
+      "format": "",
+      "key": 3
+    },
+    {
+      "name": "sdsdd",
+      "description": "sdsdsdsdsd",
+      "in": "formData",
+      "required": "true",
+      "type": "number",
+      "format": "",
+      "key": 4
+    },
+    {
+      "name": "ceshi2333",
+      "description": "测试参数",
+      "in": "query",
+      "required": "false",
+      "type": "string",
+      "format": "",
+      "key": 5
+    }
+  ],
+  "resStatus": [
+    {
+      "code": "200",
+      "description": "OK",
+      "schema": "",
+      "key": 0
+    },
+    {
+      "code": "401",
+      "description": "Unauthorized",
+      "schema": "",
+      "key": 1
+    },
+    {
+      "code": "403",
+      "description": "Fobidden",
+      "schema": "",
+      "key": 2
+    },
+    {
+      "code": "500",
+      "description": "服务器内部错误",
+      "schema": "",
+      "key": 3
+    }
+  ],
+  "resParams": [
+    {
+      "name": "sdssasdas",
+      "description": "asdasdasdas",
+      "type": "string",
+      "format": "",
+      "key": 0
+    },
+    {
+      "name": "ceshi",
+      "description": "测试项",
+      "type": "number",
+      "format": "",
+      "key": 1
+    }
+  ],
+  "summary": {
+    "title": "参数类型测试",
+    "method": "DELETE",
+    "url": "api/sdsdvdvsdvsdv",
+    "consumes": "application/json",
+    "produces": "application/json"
+  },
+  "description": "参数类型测试，编辑内容测试",
+  "reqExample": {
+    "name": "dbydm",
+    "isMdzz": true
+  },
+  "resExample": {
+    "res": true,
+    "msg": "操作成功"
+  },
+  "parentMenuId": "602bc46ab3daff3b18a5806f",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "602ccca585748d1a7c7a1052"
+  },
+  "reqParams": [
+    {
+      "name": "Authorization",
+      "description": "令牌",
+      "in": "header",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 0
+    }
+  ],
+  "resStatus": [
+    {
+      "code": "200",
+      "description": "OK",
+      "schema": "",
+      "key": 0
+    },
+    {
+      "code": "401",
+      "description": "Unauthorized",
+      "schema": "",
+      "key": 1
+    },
+    {
+      "code": "403",
+      "description": "Fobidden",
+      "schema": "",
+      "key": 2
+    }
+  ],
+  "resParams": [],
+  "summary": {
+    "title": "接口名称修改测试2333",
+    "method": "PUT",
+    "url": "api/updateTitle",
+    "consumes": "multipart/form-data",
+    "produces": "application/octet-stream"
+  },
+  "description": "接口名称修改测试",
+  "parentMenuId": "602bc46ab3daff3b18a5806f",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "602e36aa2d9fe61c9090576f"
+  },
+  "reqParams": [
+    {
+      "name": "Authorization",
+      "description": "令牌",
+      "in": "header",
+      "required": "true",
+      "type": "string",
+      "format": "",
+      "key": 0
+    }
+  ],
+  "resStatus": [
+    {
+      "code": "200",
+      "description": "OK",
+      "schema": "",
+      "key": 0
+    },
+    {
+      "code": "401",
+      "description": "Unauthorized",
+      "schema": "",
+      "key": 1
+    },
+    {
+      "code": "403",
+      "description": "Fobidden",
+      "schema": "",
+      "key": 2
+    }
+  ],
+  "resParams": [],
+  "summary": {
+    "title": "获取APi文档基本信息",
+    "method": "GET",
+    "url": "api/api-docs/baseInfo/getBaseInfo",
+    "consumes": "application/json",
+    "produces": "application/json"
+  },
+  "description": "获取APi文档基本信息",
+  "parentMenuId": "602e366d2d9fe61c9090576e",
+  "__v": 0
+}]
