@@ -81,13 +81,13 @@ MongoDB Compass
 
 ## 项目截图
 
-项目首页：https://github.com/Jiacheng787/api-docs/blob/main/img/image-20210220173819528.png
+项目首页：
 
-![image-20210220173819528](https://github.com/Jiacheng787/api-docs/blob/main/img/image-20210220173819528.png)
+![image-20210220173819528](./img/image-20210220173819528.png)
 
 添加接口：
 
-![image-20210220173906228](https://github.com/Jiacheng787/api-docs/blob/main/img/image-20210220173906228.png)
+![image-20210220173906228](./img/image-20210220173906228.png)
 
 接口详情：
 
