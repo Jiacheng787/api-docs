@@ -33,8 +33,26 @@ const router = new Router({
                     component: () => import('@/views/pages/Index.vue'),
                 },
                 {
-                    path: ':id',
+                    path: 'api/:id',
                     component: () => import('@/views/pages/Docs.vue'),
+                },
+                {
+                    path: 'create/:id',
+                    component: () => import('@/views/pages/CreateNew.vue'),
+                    meta: {
+                        type: "create"
+                    }
+                },
+                {
+                    path: 'edit',
+                    component: () => import('@/views/pages/CreateNew.vue'),
+                    meta: {
+                        type: "edit"
+                    }
+                },
+                {
+                    path: 'notFound',
+                    component: () => import('@/views/pages/NotFound.vue'),
                 }
             ]
         }

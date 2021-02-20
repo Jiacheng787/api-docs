@@ -3,17 +3,19 @@
     <div class="detail-header">
       <a-descriptions :title="summary.title"></a-descriptions>
       <div class="button-group">
-        <a-button type="primary"
-                  style="margin-right: 12px;"
-                  @click="openDebuggerPanel">
+        <a-button
+          type="primary"
+          style="margin-right: 12px"
+          @click="openDebuggerPanel"
+        >
           <a-icon type="tool" />
           调试
         </a-button>
-        <a-button style="margin-right: 12px;">
+        <a-button style="margin-right: 12px" @click="handleUpdateDetail">
           <a-icon type="edit" />
           编辑
         </a-button>
-        <a-button type="danger">
+        <a-button type="danger" @click="handleDeleteDetail">
           <a-icon type="delete" />
           删除
         </a-button>
@@ -78,9 +80,15 @@ export default {
   },
   methods: {
     openDebuggerPanel() {
-      this.$emit('openDebuggerPanel')
+      this.$emit("openDebuggerPanel");
+    },
+    handleUpdateDetail() {
+      this.$emit("onUpdateDetail");
+    },
+    handleDeleteDetail() {
+      this.$emit("onDeleteDetail");
     }
-  }
+  },
 };
 </script>
 

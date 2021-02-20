@@ -18,6 +18,7 @@
           style="width: 100%"
           v-model="selectedKeys"
           mode="inline"
+          theme="dark"
           @click="handleMenuClick"
         >
           <a-menu-item key="-1">
@@ -96,17 +97,20 @@ export default {
         selectedChild = selected[1];
       const path = this.navMenu[selectedItem].children[selectedChild].path;
       if (this.$route.params.id !== path) {
-        this.$router.push(`/docs/${path}`);
+        this.$router.push(`/docs/api/${path}`);
       }
     },
-    handleAddInterface(item) {
-      console.log(item._id)
-    }
   },
 };
 </script>
 
 <style lang="less" scoped>
+.ant-menu.ant-menu-inline.ant-menu-root.ant-menu-dark {
+  background: #1e282c;
+}
+::v-deep .ant-menu.ant-menu-inline.ant-menu-sub {
+  background: #2c3b41;
+}
 .main {
   height: 100%;
   display: flex;
@@ -135,6 +139,7 @@ export default {
     .left-aside {
       flex-basis: 256px;
       flex-shrink: 0;
+      background: #1e282c;
       .nav-items {
         display: flex;
         align-items: center;

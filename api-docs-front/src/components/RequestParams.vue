@@ -3,11 +3,11 @@
     <div class="sub-title">请求参数</div>
     <a-table
       :columns="columns"
-      :data-source="reqParams.map((item, index) => ({...item, key: index}))"
+      :data-source="reqParams"
       size="small"
       :pagination="false"
     >
-      <span slot="in" slot-scope="text, record">
+      <span slot="in" slot-scope="text">
         <template v-if="text == 'body'">
           <span style="color: #0d5aa7;">{{ text }}</span>
         </template>
@@ -27,8 +27,8 @@
           <span>{{ text }}</span>
         </template>
       </span>
-      <span slot="required" slot-scope="text, record">
-        <template v-if="text == true">
+      <span slot="required" slot-scope="text">
+        <template v-if="text == 'true'">
           <span style="color: red;">true</span>
         </template>
         <template v-else>

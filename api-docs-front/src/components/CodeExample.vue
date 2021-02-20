@@ -25,7 +25,7 @@ export default {
       default: 0,
     },
     example: {
-      type: Object,
+      type: [Object, Array],
       default: () => {
         return {};
       },

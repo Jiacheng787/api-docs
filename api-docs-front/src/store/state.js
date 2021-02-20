@@ -1,6 +1,8 @@
 const state = {
-    navMenu: [],
-    baseInfo: {}
+	navMenu: [],
+	baseInfo: {},
+	apiDetail: {},
+	apiDetailSpinning: false,
 }
 
 export default state

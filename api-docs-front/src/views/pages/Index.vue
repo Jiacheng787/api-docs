@@ -38,7 +38,7 @@
         </div>
       </div>
       <span slot="operate" slot-scope="record">
-        <a-button type="link">
+        <a-button type="link" @click="() => handleCreateApi(record._id)">
           <a-icon type="plus" />
           添加接口
         </a-button>
@@ -123,6 +123,12 @@ export default {
   },
   methods: {
     ...mapActions(['getApiNavMenu']),
+    /**
+     * @description 添加接口
+     */
+    handleCreateApi(id) {
+      this.$router.push(`/docs/create/${id}`);
+    },
     /**
      * @description 打开弹框
      */

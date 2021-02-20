@@ -38,8 +38,14 @@ class NavMenuController extends Controller {
     async deleteSort() {
         const { ctx } = this;
         const { id } = ctx.request.body;
-        await ctx.model.NavMenu.remove({ _id: id });
-        ctx.returnBody(true, {}, '删除成功！', 200);
+
+        const { children } = await ctx.model.NavMenu.findOne({_id: id});
+        const operationIdCollection = children.map(item => item.path);
+        await ctx.model.ApiDetails.remove({_id: {$in: operationIdCollection}}); // 移除该分类下所有接口
+
+        await ctx.model.NavMenu.remove({ _id: id }); // 移除分类
+
+        ctx.returnBody(true, operationIdCollection, '删除成功！', 200);
     }
 }
 

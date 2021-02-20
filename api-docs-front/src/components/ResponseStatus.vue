@@ -3,7 +3,7 @@
     <div class="sub-title">响应状态</div>
     <a-table
       :columns="columns"
-      :data-source="resStatus.map((item, index) => ({...item, key: index}))"
+      :data-source="resStatus"
       size="small"
       :pagination="false"
     >

@@ -1,12 +1,24 @@
 <template>
   <div class="overviews">
-    <a-spin :spinning="spinning" size="large">
+    <a-spin :spinning="apiDetailSpinning" size="large">
       <!-- 接口概览 -->
-      <InterfaceSummary :summary="apiDetail.summary" @openDebuggerPanel="openDebuggerPanel" />
+      <InterfaceSummary
+        :summary="apiDetail.summary"
+        @openDebuggerPanel="openDebuggerPanel"
+        @onUpdateDetail="handleUpdateDetail"
+        @onDeleteDetail="handleDeleteDetail"
+      />
       <!-- 接口描述 -->
-      <InterfaceDescription :description="apiDetail.description" />
+      <InterfaceDescription
+        v-show="apiDetail.description"
+        :description="apiDetail.description"
+      />
       <!-- 请求示例 -->
-      <CodeExample :type="0" :example="apiDetail.reqExample" />
+      <CodeExample
+        v-show="apiDetail.reqExample"
+        :type="0"
+        :example="apiDetail.reqExample || {}"
+      />
       <!-- 请求参数 -->
       <RequestParams :reqParams="apiDetail.reqParams" />
       <!-- 响应状态 -->
@@ -14,7 +26,11 @@
       <!-- 响应参数 -->
       <ResponseParams :resParams="apiDetail.resParams" />
       <!-- 响应示例 -->
-      <CodeExample :type="1" :example="apiDetail.resExample" />
+      <CodeExample
+        v-show="apiDetail.resExample"
+        :type="1"
+        :example="apiDetail.resExample || {}"
+      />
     </a-spin>
     <DebuggerPanel ref="debugger-panel" />
   </div>
@@ -22,6 +38,7 @@
 
 <script>
 import api from "@/api";
+import { mapGetters, mapActions } from "vuex";
 import InterfaceSummary from "@/components/InterfaceSummary";
 import InterfaceDescription from "@/components/InterfaceDescription";
 import RequestParams from "@/components/RequestParams";
@@ -38,41 +55,45 @@ export default {
     ResponseStatus,
     ResponseParams,
     CodeExample,
-    DebuggerPanel
+    DebuggerPanel,
   },
   data() {
     return {
-      apiDetail: {},
-      spinning: false,
+      // apiDetail: {},
+      // spinning: false,
     };
+  },
+  computed: {
+    ...mapGetters(["apiDetail", "apiDetailSpinning"]),
   },
   watch: {
     "$route.params.id": {
       handler(val) {
-        console.log(val);
         this.getApiDetail(val);
       },
       immediate: true,
     },
   },
   methods: {
-    getApiDetail(id) {
-      this.spinning = true;
-      api.apiDetail.getApiDetail(id)
-        .then((res) => {
-          console.log(res);
-          this.apiDetail = res.data;
-        })
-        .catch(e => {
-          this.$message.error(e.message);
-        })
-        .finally(() => {
-          this.spinning = false;
-        })
-    },
+    ...mapActions(["getApiDetail", "deleteApiDetail"]),
     openDebuggerPanel() {
-      this.$refs['debugger-panel'].handleOpen();
-    }
+      this.$refs["debugger-panel"].handleOpen();
+    },
+    handleUpdateDetail() {
+      this.$router.push('/docs/edit')
+    },
+    handleDeleteDetail() {
+      this.$confirm({
+        title: `确认删除《${this.apiDetail.summary.title}》接口吗？`,
+        content: '删除之后无法恢复',
+        onOk: () => {
+          let operationId = this.$route.params.id;
+          let { parentMenuId } = this.apiDetail;
+          this.deleteApiDetail({operationId, parentMenuId});
+        },
+        onCancel() {},
+      });
+    },
   },
 };
 </script>

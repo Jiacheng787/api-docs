@@ -4,7 +4,7 @@ module.exports = app => {
     const mongoose = app.mongoose;
     const Schema = mongoose.Schema;
     const ApiDetailsSchema = new Schema({
-        operationId: { type: String },
+        parentMenuId: { type: String }, // 删除、更新的时候用于查找接口分类
         summary: { type: Object },
         description: { type: String },
         reqParams: { type: Array },

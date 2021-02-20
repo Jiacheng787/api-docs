@@ -3,7 +3,7 @@
     <div class="sub-title">响应参数</div>
     <a-table
       :columns="columns"
-      :data-source="resParams.map((item, index) => ({...item, key: index}))"
+      :data-source="resParams"
       size="small"
       :pagination="false"
     >
